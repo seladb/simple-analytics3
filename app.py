@@ -19,12 +19,12 @@ def serve_requests():
     enriched_data = enrich_geo.enrich(request.remote_addr)
 
     anomaly_rank = AnomalyRanking()
-    request_rank = anomaly_rank.rank_request(request)
+    request_rank = anomaly_rank.rank_request(request.headers)
 
     db_service = DBService()
     db_service.write_to_db(
         Record(
-            geo_location=enriched_data, rank=request_rank, request=request
+            geo_location=enriched_data, rank=request_rank
         )
     )
     return "Hello world"

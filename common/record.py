@@ -6,4 +6,3 @@ from flask import Request
 class Record:
     geo_location: str
     rank: int
-    request: Request

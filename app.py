@@ -1,10 +1,16 @@
+import logging
 from flask import Flask, request
+from flask.logging import default_handler
 from services.enrich_geo_location import EnrichGeoLocation
 from services.request_anomaly_ranking import AnomalyRanking
 from services.db_service import DBService
 from common.record import Record
 
 app = Flask(__name__)
+
+root = logging.getLogger()
+root.setLevel(logging.INFO)
+root.addHandler(default_handler)
 
 
 @app.route('/')

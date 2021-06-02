@@ -1,4 +1,7 @@
 import logging
+# https://docs.python.org/3/library/queue.html
+import threading
+import queue
 from flask import Flask, request
 from flask.logging import default_handler
 from services.enrich_geo_location import EnrichGeoLocation
